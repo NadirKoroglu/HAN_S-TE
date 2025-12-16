@@ -148,56 +148,81 @@ h1 {
   color: var(--text-color);
 }
 
-/* Blog Hierarchy Styles */
+/* File Explorer Styles */
 .hierarchy-tree {
   background: var(--surface-color);
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', monospace;
+  /* Monospace for alignment if desired, but Inter is fine */
+  user-select: none;
+  /* Prevent text selection when clicking folders */
 }
 
 .tree-item {
-  margin-left: 1.5rem;
   position: relative;
-  padding-left: 1rem;
-  border-left: 2px solid var(--primary-color);
-}
-
-.tree-item:first-child {
-  margin-left: 0;
-  border-left: none;
-  padding-left: 0;
 }
 
 .folder {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.35rem 0.5rem;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-color);
+  border-radius: 4px;
+  transition: background-color 0.15s;
 }
 
 .folder:hover {
+  background-color: rgba(59, 130, 246, 0.1);
   color: var(--primary-color);
 }
 
 .folder-content {
-  margin-top: 0.5rem;
+  margin-left: 1.2rem;
+  /* Indentation */
+  border-left: 1px solid rgba(148, 163, 184, 0.2);
+  /* Guide line */
+  padding-left: 0.5rem;
+  display: none;
+  /* Hidden by default */
+}
+
+.folder-content.open {
+  display: block;
+  /* Show when open */
+}
+
+/* Chevron icon rotation */
+.chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s;
+  color: var(--text-light);
+}
+
+.folder.open .chevron {
+  transform: rotate(90deg);
 }
 
 .file {
-  display: block;
-  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
   color: var(--text-light);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: all 0.2s;
+  margin-left: 1.2rem;
+  font-size: 0.95rem;
 }
 
 .file:hover {
   color: var(--primary-color);
-  background-color: #f1f5f9;
+  background-color: rgba(59, 130, 246, 0.05);
   border-radius: 4px;
 }
 
